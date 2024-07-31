@@ -1,5 +1,5 @@
 import random
-from src.card import Card
+from src.card import Card #to get the shuffle() method to randomize the deck
 
 class Deck:
     def __init__(self):
@@ -10,4 +10,6 @@ class Deck:
         random.shuffle(self.cards)
     
     def deal(self, num):
-        dealt_cards = self.cards 
+        dealt_cards = self.cards[:num] #get first num cards
+        self.cards = self.cards[num:] #keeps all the cards from idex num to end of list
+        return dealt_cards 
