@@ -29,5 +29,8 @@ class Dealer: #deal and collect bet
                 except ValueError as e:
                     print(f"{player.name}:{e}")
         self.table.pot += total_bet
+    
+    def distribute_pot(self, winner):
+        
 
     
