@@ -1,29 +1,51 @@
-#start_game
 
-    #create table, set small blind / big blind / ante / each player's buy in(modifiable)/ a dictionary containing lose and gain of each/
+from deck import Deck
+from player import Player
+from table import Table
+from dealer import Dealer
+from evaluate import Evaluate
+import time
 
-    #player can choose if they want to see their cards
+small_blind = int(input("Enter the small blind: "))
+big_blind = 2 * small_blind
+ante = int(input(f"Enter the ante: smaller then {small_blind}"))
+buy_in = int(input("Enter the buy in amount: "))
 
-    #A time tracker that tracks the time it takes for the player to make decision
+#the following player enter method should be changed 
+players = []
+ids = [1, 2, 3, 4, 5, 6, 7, 8]
+for id in ids:
+    name = input(f"Enter player {id}'s name: ")
+    player = Player(id, name, buy_in)
+    players.append(player)
 
-    #For each round, there should be options like fold/check/raise
+class Game:
+    def __init__(self, players, small_blind, big_blind, ante , buy_in):
+        self.deck = Deck()
+        self.players = players
+        self.table = Table(players)
+        self.dealer = Dealer()
+        self.small_blind = small_blind
+        self.big_blind = big_blind
+        self.ante = ante
+        self.buy_in = buy_in
+    player_positions = players # the order of the players is the indexing of the list of players, so when player enters the game, they can choose their positions
+    #player when entering could choose which position they want to seat in the list of players
 
-    #before start decides the small blind and big blind positions
+    def assign_dealer(self): 
+        self.deck.shuffle()
+        for i in range(len(self.players)):
+            card = self.deck.deal(1)
+            self.players[i].hand.append(card)
+        #pick out who has the dealer button
+        # the player with the dealer button is the player has the highest card
+        for i in range(len(self.players)):
+            if self.players[i].hand[0] == max(self.players[i].hand):
+                self.players = self.players[i:] + self.players[:i] # the player with the dealer button is the first player in the list of players
+                break
+        print(f"{self.players[0].name} get the dealer button, {self.players[1].name} is the small blind, {self.players[2].name} is the big blind")
+        
 
-    #for the frist round, the action starts at sb placing small blind and bb placing big blind
+    
 
-    #then go a round giving each one fold/check/raise option, then back to small blind and big blind able to raise or fold or check
-
-    #then dealer collects bet and if the player is playing bigger then 1, deal flop
-
-    #repeat this process, but no small blind nor big blind this time, till we deal river except all players on the table all in
-
-    #if all players all in at some point before river, they are able to choose how many runs to have, and the time would be the min[all of their proposal]
-
-    #during each phase of the game, the card and combination with the community card will be evaulate
-
-    # at river if all player checks or call, we the compare their hands 
-
-    #at the end the winner get the pot if same they chop the pot, there are also a special case where a person with short stack all in and there are more then one people on the table have more chips then that guy choose keep playing, and when distributing pot in this case, if the short stack guy is the winner, he gets the pot he played till allin and the last bet times num of people including he on the table.
-
-    #reset the table and deal next round
+                
