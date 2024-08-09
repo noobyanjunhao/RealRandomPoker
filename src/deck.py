@@ -1,9 +1,9 @@
 import random
-from src.card import Card #to get the shuffle() method to randomize the deck
+from card import Card #to get the shuffle() method to randomize the deck
 
 class Deck:
     def __init__(self):
-        self.cards = [Card(rank, suit) for rank in "23456789TJQK" for suits in "hearts diamonds clubs spades". split()]
+        self.cards = [Card(rank, suit) for rank in "23456789TJQK" for suit in "hearts diamonds clubs spades". split()]
         self.shuffle()
     
     def shuffle(self):
