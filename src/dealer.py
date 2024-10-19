@@ -22,6 +22,7 @@ class Dealer: #deal and collect bet
     
     def deal_river(self, deck):
         self.community_cards.append(deck.deal(1)[0])
+        
     def collect_ante(self, ante):
         for player in self.players:
             player.place_bet(ante)
