@@ -1,9 +1,9 @@
 from unittest.mock import patch
 import random
-from game import Game
-from player import Player
+from model.game import Game
+from model.player import Player
 
-def test_full_game_flow():
+def test_pre_flop_to_river_round():
     # Create players
     players = [
         Player(player_id=1, name="Alice", stack=1000),
@@ -56,7 +56,7 @@ def test_full_game_flow():
         print("\nAfter flop round:")
         for player in players:
             print(f"{player.name} has {player.stack} chips remaining.")
-        print(f"Total pot: {game.dealer.pot}\n")
+        print(f"Total pot: {game.dealer.pot}")
 
         # Run the turn round
         game.turn_round()
@@ -64,7 +64,7 @@ def test_full_game_flow():
         print("\nAfter turn round:")
         for player in players:
             print(f"{player.name} has {player.stack} chips remaining.")
-        print(f"Total pot: {game.dealer.pot}\n")
+        print(f"Total pot: {game.dealer.pot}")
 
         # Run the river round
         game.river_round()
@@ -72,15 +72,7 @@ def test_full_game_flow():
         print("\nAfter river round:")
         for player in players:
             print(f"{player.name} has {player.stack} chips remaining.")
-        print(f"Total pot: {game.dealer.pot}\n")
-
-        # Show community cards and each player's hand
-        print(f"Community cards: {[str(card) for card in game.dealer.community_cards]}")
-        for player in players:
-            print(f"{player.name}'s hand: {[str(card) for card in player.hand]}")
-
-        # Evaluate hands and print the winner
-        game.evaluate_hands_and_print_winner()
+        print(f"Total pot: {game.dealer.pot}")
 
 # Execute the test
-test_full_game_flow()
+test_pre_flop_to_river_round()

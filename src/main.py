@@ -1,7 +1,7 @@
-from dealer import Dealer
-from card import Card
-from deck import Deck
-from player import Player
+from model.dealer import Dealer
+from model.card import Card
+from model.deck import Deck
+from model.player import Player
 
 def main():
     #test for the function check hole cards
