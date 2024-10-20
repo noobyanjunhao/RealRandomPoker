@@ -1,5 +1,5 @@
-from game import Game
-from player import Player
+from model.game import Game
+from model.player import Player
 
 
 def test_pre_flop_round():

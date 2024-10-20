@@ -1,5 +1,5 @@
 import random
-from card import Card #to get the shuffle() method to randomize the deck
+from model.card import Card #to get the shuffle() method to randomize the deck
 
 class Deck:
     def __init__(self):

@@ -2,10 +2,7 @@ from functools import cmp_to_key
 from itertools import combinations
 from collections import defaultdict
 
-from card import Card
-from player import Player
-
-class Evaluate:
+class Evaluator:
     combination = {
         'High Card': 0,
         'One Pair': 1,
@@ -126,4 +123,3 @@ class Evaluate:
 #     # Test the compare method
 #     comparison_result = evaluator.compare(yjh, mom, community_cards)
 #     print(f"Comparison result: {comparison_result}")
-

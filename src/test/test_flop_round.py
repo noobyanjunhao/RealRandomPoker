@@ -1,6 +1,6 @@
 from unittest.mock import patch
-from game import Game
-from player import Player
+from model.game import Game
+from model.player import Player
 
 
 def mock_input(prompt):

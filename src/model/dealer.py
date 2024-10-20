@@ -1,4 +1,4 @@
-from deck import Deck
+from model.deck import Deck
 
 class Dealer: #deal and collect bet
     def __init__(self, players):
